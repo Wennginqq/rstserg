@@ -1,0 +1,20 @@
+{% include "nav.html"%}
+
+<div class="container">
+    <form action="{{url_for('employee.addEmployee')}}" method="post">
+        <div class="row">
+            <div class="col-6">
+                <label for="firstname">Имя</label>
+                <input name="firstname" type="text" placeholder="Имя">
+
+                <label for="lastname">Фамилия</label>
+                <input name="lastname" type="text" placeholder="Фамилия">
+                
+                <label for="position">Должность</label>
+                <input name="position" type="text" placeholder="Должнотсь">
+            </div>
+        </div>
+        <input type="submit" value="Добавить">
+    </form>
+
+</div>

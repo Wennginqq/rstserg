@@ -1,0 +1,16 @@
+{% include "nav.html"%}
+<div class="container">
+    <h4>Добавить на склад</h4>
+    <form action="{{url_for('inventory.addToInventory')}}" method="post">
+    <div class="row">
+        {%for item in items%}
+        <input class="col-3 is-center"type="text" name="name" id="" value="{{item.name}}">
+        <input class="col-3 is-center"type="text" name="code" id="" value="{{item.code}}">
+        <input class="col-3 is-center"type="text" name="amount" id="" value="{{item.amount}}">
+        <input class="col-3 is-center"type="text" name="unit" id="" value="{{item.unit}}">
+        <input class="col-3 is-center" type="submit" value="Отправить">
+        {%endfor%}
+        
+    </div>
+</form>
+</div>

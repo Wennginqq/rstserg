@@ -1,0 +1,43 @@
+{% include "nav.html"%}
+
+<div class="container">
+
+    <h4 class="bd-error">{{mes}}</h4>
+    <form action="{{url_for('schedule.addEntry')}}" method="post">
+        <label for="employees">Сотрудник 1</label>
+        <select name="emp1">
+            {%for item in employee%}
+            <option value="{{item.employeeId}}">{{item.firstname}} {{item.lastname}}-{{item.position}}</option>
+            {%endfor%}
+        </select>
+        <label for="employees">Сотрудник 2</label>
+        <select name="emp2">
+            {%for item in employee%}
+            <option value="{{item.employeeId}}">{{item.firstname}} {{item.lastname}}-{{item.position}}</option>
+            {%endfor%}
+        </select>
+        <label for="employees">Сотрудник 3</label>
+        <select name="emp3">
+            {%for item in employee%}
+            <option value="{{item.employeeId}}">{{item.firstname}} {{item.lastname}}-{{item.position}}</option>
+            {%endfor%}
+        </select>
+        <label for="employees">Сотрудник 4</label>
+        <select name="emp4">
+            {%for item in employee%}
+            <option value="{{item.employeeId}}">{{item.firstname}} {{item.lastname}}-{{item.position}}</option>
+            {%endfor%}
+        </select>
+        <label for="employees">Сотрудник 5</label>
+        <select name="emp5">
+            {%for item in employee%}
+            <option value="{{item.employeeId}}">{{item.firstname}} {{item.lastname}}-{{item.position}}</option>
+            {%endfor%}
+        </select>
+        <label for="date">Дата</label>
+        <input type="date" name="date">
+        <br>
+        <input type="submit" value="Добавить запись">
+    </form>
+
+</div>

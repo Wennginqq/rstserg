@@ -1,0 +1,34 @@
+{% include "nav.html"%}
+<div class="container">
+    <a class="navbar-links button primary" href="{{url_for('menu.addMenuItem')}}">Добавить в меню</a>
+    <a class="navbar-links button outline" href="{{url_for('menu.createStoplistReport')}}">Стоплист отчет</a>
+    <div class="row">
+        {%for item in menuItems%}
+        <div class="card col-4">
+            <header>
+            <div class="row is-center">
+            <div>
+                <h4>{{item.name}}</h4>
+            </div>
+            <div>
+                {%if item.stoplist == 'доступно'%}
+                <a class="navbar-links button outline col-12" href="{{url_for('menu.toStoplist', foodId = item.foodId)}}">В стоплист</a>
+                {%else%}
+                <a class="navbar-links button outline col-12" href="{{url_for('menu.fromStoplist', foodId = item.foodId)}}">Из стоплиста</a>
+                {%endif%}
+            </div>
+        </div>
+            </header>
+            {%if item.path_to_img != None %}
+            <img class="menu-card-image is-full-width col-12" src="{{url_for('static', filename='images/'+item.path_to_img)}}">
+            {%else%}
+            <img class="menu-card-noimage " src="{{url_for('static', filename='images/bim.png')}}">
+            {%endif%}
+            <footer class = "footer-buttons is-center row col-12">
+                <a class="navbar-links button outline" href="{{url_for('menu.aboutFood', foodId = item.foodId)}}">Подробнее</a>
+                <a class="navbar-links button error" href="{{url_for('menu.deleteFromMenu', foodId = item.foodId)}}">Удалить</a>
+            </footer>
+        </div>
+        {%endfor%}
+    </div>
+</div>

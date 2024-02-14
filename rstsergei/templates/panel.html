@@ -1,0 +1,57 @@
+{% include "nav.html"%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4>Текущая смена: {{panelSchedule[0].day_of_shift}}</h4>
+            <div class="container">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Должность</td>
+                            <td>Сотрудник</td>
+                            <td>Примечание</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for day in panelSchedule %}
+                        <tr>
+                            <td>{{day.position}}</td>
+                            <td>{{day.lastname}}</td>
+                            <td>{{day.caption}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4>Заказы за сегодня</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Номер стола</td>
+                        <td>Примечание</td>
+                        <td>Чек</td>
+                        <td>Ответственный</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for order in panelOrders%}
+                    <tr>
+                        <td>{{order.tableId}}</td>
+                        <td>{{order.caption}}</td>
+                        <td>{{order.bill}}</td>
+                        <td>{{order.firstname}} {{order.lastname}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

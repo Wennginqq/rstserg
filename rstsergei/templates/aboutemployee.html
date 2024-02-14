@@ -1,0 +1,24 @@
+{% include "nav.html"%}
+
+<div class="container">
+    <h4>Редактирование информации о сотруднике</h4>
+    <form action="{{url_for('employee.aboutEmployee')}}" method="post">
+        <div class="row">
+            <div class="col-6">
+                <label for="id">ID</label>
+                <input name="id" type="text" value="{{employees.employeeId}}" readonly>
+
+                <label for="firstname">Имя</label>
+                <input name="firstname" type="text" value="{{employees.firstname}}">
+
+                <label for="lastname">Фамилия</label>
+                <input name="lastname" type="text" value="{{employees.lastname}}">
+                
+                <label for="position">Должность</label>
+                <input name="position" type="text" value="{{employees.position}}">
+            </div>
+        </div>
+        <input type="submit" value="Сохранить изменения">
+    </form>
+
+</div>

@@ -1,0 +1,33 @@
+{% include "nav.html"%}
+<div class="container">
+    <h4 class="">Список сотрудников</h4>
+    <div class="container ">
+        <a class="button primary " href="{{ url_for('employee.addEmployee')}}">Добавить сотрудника</a>
+        <div class="row col-10">
+            <table class="">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Имя</td>
+                        <td>Фамилия</td>
+                        <td>Должность</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for employee in employees%}
+                    <tr>
+                        <td>{{employee.employeeId}}</td>
+                        <td>{{employee.firstname}}</td>
+                        <td>{{employee.lastname}}</td>
+                        <td>{{employee.position}}</td>
+                        <td class="is-right">
+                            <a class="button primary " href="{{ url_for('employee.aboutEmployee', employeeId=employee.employeeId)}}">Подробнее</a>
+                            <a class="button error" href="{{ url_for('employee.deleteEmployee', employeeId=employee.employeeId)}}">Удалить</a>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
