@@ -87,7 +87,7 @@ def addMenuItem():
 def deleteFromMenu():
     foodID = request.args.get('foodId')
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('delete from menu where foodId = %s', (foodID))
+    cursor.execute('delete from menu where foodId = %s', (foodID,))
     mysql.connection.commit()
     cursor.close()
     return redirect('/menu')
