@@ -1,0 +1,40 @@
+{% include "nav.html"%}
+
+<div class="container">
+    <h2>Подробнее о блюде: {{menuItems.name}}</h2>
+    <form action="{{url_for('menu.aboutFood')}}" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-6">
+                <label for="id">ID</label>
+                <input name="id" type="text" value="{{menuItems.foodId}}" readonly>
+                <label for="name">Название</label>
+                <input name="name" type="text" value="{{menuItems.name}}">
+                <label for="caption">Описание</label>
+                <textarea rows="15" cols="85" name="caption">{{menuItems.caption}}</textarea>
+                <label for="price">Цена</label>
+                <input name="price" type="text" value="{{menuItems.price}}">
+                <label for="category">Категория</label>
+                <select name="category">
+                    {%for item in category%}
+                    {%if item.categoryId == menuItems.food_category_categoryId %}
+                    <option value="{{item.categoryId}}" selected>{{item.name}}</option>
+                    {%else%}
+                    <option value="{{item.categoryId}}">{{item.name}}</option>
+                    {%endif%}
+                    {%endfor%}
+                </select>
+            </div>
+            <div class="col-6">
+                {%if menuItems.path_to_img == None %}
+                <label for="img">Добавить изображение</label>
+                {%else%}
+                <img class="menu-card-image" src="{{url_for('static', filename='images/'+menuItems.path_to_img)}}">
+                <label for="img">Заменть изображение</label>
+                {%endif%}
+                <input type="file" name="img" />
+            </div>
+        </div>
+        <input type="submit" value="Сохранить изменения">
+    </form>
+
+</div>

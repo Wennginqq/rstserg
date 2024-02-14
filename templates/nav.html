@@ -1,0 +1,23 @@
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}">
+</head>
+{%if session.loggedin==True%}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a class="navbar-links button outline" href="{{url_for('panel.showPanel')}}">Панель управления</a>
+            <a class="navbar-links button outline" href="{{url_for('employee.showEmployee')}}">Сотрудники</a>
+            <a class="navbar-links button outline" href="{{url_for('menu.showMenu')}}">Меню</a>
+            <a class="navbar-links button outline" href="{{url_for('orders.showOrders')}}">Заказы</a>
+            <a class="navbar-links button outline" href="{{url_for('schedule.showSchedule')}}">График</a>
+            <a class="navbar-links button outline" href="{{url_for('inventory.showinventory')}}">Склад</a>
+
+        </div>
+        <div class=" is-right">
+            Пользователь: {{session.username}}
+            <a class="navbar-links button error" href="{{url_for('login.logout')}}">Выйти</a>
+        </div>
+    </div>
+</div>
+{%endif%}

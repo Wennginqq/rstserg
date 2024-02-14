@@ -1,0 +1,26 @@
+{% include "nav.html"%}
+
+<div class="container">
+    <a class="button primary " href="{{ url_for('schedule.addEntry')}}">Добавить запись в график</a>
+    <table>
+        <thead>
+            <tr>
+                <td>Дата</td>
+
+                <td>Сотрудник</td>
+                <td>Должность</td>
+            </tr>
+        </thead>
+        <tbody>
+            {%for item in schedule%}
+            <tr>
+                <td>{{item.day_of_shift}}</td>
+                <td>{{item.lastname}}</td>
+                <td>{{item.position}}</td>
+            </tr>
+            
+            {%endfor%}
+            
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,47 @@
+{% include "nav.html"%}
+<div class="container">
+    <div class="row">
+        <table>
+            <div class="row">
+                <div class="col-12">
+                    <h4>Инвентаризация</h4>
+                </div>
+                <div class="col-12">
+                    <a class="navbar-links button outline" href="{{url_for('inventory.addToInventory')}}">Добавить на
+                        склад</a>
+                    <a class="navbar-links button outline" href="{{url_for('inventory.createReportInventory')}}">Сформировать отчет</a>
+                </div>
+            </div>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Наименование</td>
+                    <td>Код</td>
+                    <td>Кол-во</td>
+                    <td>Ед. измерения</td>
+                </tr>
+            </thead>
+            <tbody>
+                {%for item in Items%}
+                <tr>
+                    <td>{{item.inventoryId}} </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.code}}</td>
+                    <td>{{item.amount}}</td>
+                    <td>{{item.unit}}</td>
+                    <td>
+                        <div class="row">
+                            <div><a class="navbar-links button outline"
+                                    href="{{url_for('inventory.changeInventory', id = item.inventoryId)}}">Изменить</a>
+                            </div>
+                            <div><a class="navbar-links button error"
+                                    href="{{url_for('inventory.deleteFromInventory', id = item.inventoryId)}}">Удалить</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>

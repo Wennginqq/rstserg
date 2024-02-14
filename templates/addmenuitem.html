@@ -1,0 +1,31 @@
+{% include "nav.html"%}
+
+<div class="container">
+    <h2>Добавить блюдо:</h2>
+    <form action="{{url_for('menu.addMenuItem')}}" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-6">
+                <label for="name">Название</label>
+                <input name="name" type="text" placeholder="">
+                <label for="caption">Описание</label>
+                <textarea rows="15" cols="85" name="caption"></textarea>
+                <label for="price">Цена</label>
+                <input name="price" type="text" placeholder="">
+                <label for="category">Категория</label>
+                <select name="category">
+                    {%for item in category%}
+                    <option value="{{item.categoryId}}" selected>{{item.name}}</option>
+                    {%else%}
+                    <option value="{{item.categoryId}}">{{item.name}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="img">Добавить изображение</label>
+                <input type="file" name="img" />
+            </div>
+        </div>
+        <input type="submit" value="Добавить">
+    </form>
+
+</div>
